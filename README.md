@@ -1,16 +1,68 @@
-# React + Vite
+# 머먹지
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**머뭇거리는 시간을 줄여주는 메뉴 추천 서비스**
 
-Currently, two official plugins are available:
+머먹지는 “오늘 뭐 먹지?” 앞에서 머뭇거리는 시간을 줄여주기 위한 메뉴 추천 웹서비스입니다.
+사용자가 간단한 질문에 답하면, 상황에 어울리는 메뉴 하나와 비슷한 선택지들을 추천합니다.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 주요 기능
 
-## React Compiler
+* 6개 질문 기반 메뉴 추천
+* 사용자의 상황, 예산, 기분, 먹는 방식 반영
+* 메인 추천 메뉴 1개 제공
+* 비슷한 대안 메뉴 3개 제공
+* “다시 골라줘” 기능
+* “별로야” 기능
+* 머먹쥐 캐릭터를 활용한 귀여운 사용 흐름
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 질문 흐름
 
-## Expanding the ESLint configuration
+1. 오늘은 뭐가 필요하지?
+2. 누구랑 먹지?
+3. 어떻게 먹을까?
+4. 얼마 정도로 생각 중이지?
+5. 오늘은 어떤 느낌이지?
+6. 지금 상태는 좀 어때?
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 사용 기술
+
+* React
+* Vite
+* JavaScript
+* CSS
+
+## 실행 방법
+
+프로젝트를 내려받은 뒤 아래 명령어를 실행합니다.
+
+```bash
+npm install
+npm run dev
+```
+
+실행 후 브라우저에서 아래 주소로 접속합니다.
+
+```text
+http://localhost:5173/
+```
+
+## 프로젝트 목표
+
+처음부터 완성형 서비스를 만드는 것보다,
+주변 사람들이 링크로 접속해서 가볍게 테스트해볼 수 있는 메뉴 추천 서비스를 목표로 합니다.
+
+현재 버전은 v0.1 테스트버전입니다.
+
+## 마스코트
+
+머먹쥐는 메뉴 추천을 도와주는 작은 다람쥐 캐릭터입니다.
+숟가락을 들고 사용자의 메뉴 고민을 함께 덜어주는 역할을 합니다.
+
+## 앞으로 추가하고 싶은 기능
+
+* 메뉴 데이터 확장
+* 추천 이유 개선
+* 캐릭터 이미지 적용
+* 모바일 화면 디자인 개선
+* 공유용 결과 카드
+* 배포 링크 만들기
