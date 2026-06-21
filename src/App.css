@@ -450,3 +450,31 @@ h1 {
 .result-actions button {
   min-height: 48px;
 }
+.share-button {
+  width: 100%;
+  min-height: 50px;
+  margin-top: 10px;
+  border: 3px solid var(--brown);
+  border-radius: 18px;
+  background: #fffdf5;
+  color: var(--brown);
+  font-size: 16px;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 4px 4px 0 rgba(90, 52, 34, 0.16);
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    background 0.15s ease;
+}
+
+.share-button:hover {
+  background: #fff7df;
+  transform: translateY(-1px);
+  box-shadow: 5px 5px 0 rgba(90, 52, 34, 0.18);
+}
+
+.share-button:active {
+  transform: translateY(2px);
+  box-shadow: 2px 2px 0 rgba(90, 52, 34, 0.16);
+}

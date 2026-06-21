@@ -114,6 +114,86 @@ function App() {
 
   const currentQuestion = QUESTIONS[currentQuestionIndex];
   const currentResult = recommendation?.main;
+  async function copyShareText(text) {
+  try {
+    await navigator.clipboard.writeText(text);
+    alert('추천 결과를 복사했지! 친구에게 붙여넣어 보내면 돼.');
+  } catch (error) {
+    window.prompt('아래 내용을 복사해서 공유하면 돼.', text);
+  }
+}
+
+async function handleShareResult() {
+  if (!currentResult) return;
+
+  const shareText = `오늘의 머먹지 추천은 ${currentResult.name}!
+
+${currentResult.reason}
+
+머뭇거리는 시간을 줄여주는 메뉴 추천 서비스, 머먹지 🐿️`;
+
+  const shareUrl = window.location.origin;
+
+  const fullShareText = `${shareText}
+
+${shareUrl}`;
+
+  if (navigator.share) {
+    try {
+      await navigator.share({
+        title: '머먹지 추천 결과',
+        text: shareText,
+        url: shareUrl,
+      });
+    } catch (error) {
+      // 공유창을 닫은 경우에는 아무것도 하지 않음
+    }
+
+    return;
+  }
+
+  copyShareText(fullShareText);
+}
+  async function copyShareText(text) {
+  try {
+    await navigator.clipboard.writeText(text);
+    alert('추천 결과를 복사했지! 친구에게 붙여넣어 보내면 돼.');
+  } catch (error) {
+    window.prompt('아래 내용을 복사해서 공유하면 돼.', text);
+  }
+}
+
+async function handleShareResult() {
+  if (!currentResult) return;
+
+  const shareText = `오늘의 머먹지 추천은 ${currentResult.name}!
+
+${currentResult.reason}
+
+머뭇거리는 시간을 줄여주는 메뉴 추천 서비스, 머먹지 🐿️`;
+
+  const shareUrl = window.location.origin;
+
+  const fullShareText = `${shareText}
+
+${shareUrl}`;
+
+  if (navigator.share) {
+    try {
+      await navigator.share({
+        title: '머먹지 추천 결과',
+        text: shareText,
+        url: shareUrl,
+      });
+    } catch (error) {
+      // 공유창을 닫은 경우에는 아무것도 하지 않음
+    }
+
+    return;
+  }
+
+  copyShareText(fullShareText);
+}
 
   function handleStart() {
     setScreen('question');
@@ -372,6 +452,9 @@ function App() {
           >
             이걸로 정했지!
           </button>
+          <button className="share-button" onClick={handleShareResult}>
+  친구한테 공유하기
+</button>
 
           <div className="result-actions">
             <button className="sub-button" onClick={handleRetry}>
