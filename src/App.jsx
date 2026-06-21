@@ -214,6 +214,14 @@ function App() {
           <p className="progress">
             {currentQuestionIndex + 1} / {QUESTIONS.length}
           </p>
+          <div className="progress-bar">
+  <div
+    className="progress-fill"
+    style={{
+      width: `${((currentQuestionIndex + 1) / QUESTIONS.length) * 100}%`,
+    }}
+  />
+</div>
 
           <div className="mini-mascot">🐿️</div>
 
@@ -375,8 +383,8 @@ function App() {
           </h2>
 
           <p className="description">
-            이제 맛있는 거 먹으러<br />
-            출발하면 되지.
+            이제 맛있는 시간만<br />
+남았지.
           </p>
 
           <button className="start-button" onClick={handleStart}>
