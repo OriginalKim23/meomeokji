@@ -394,3 +394,59 @@ h1 {
   border-radius: 999px;
   transition: width 0.25s ease;
 }
+.result-detail-box,
+.variation-box {
+  width: 100%;
+  margin-top: 12px;
+  padding: 16px;
+  border: 3px solid rgba(90, 52, 34, 0.35);
+  border-radius: 20px;
+  background: rgba(255, 253, 245, 0.88);
+  text-align: left;
+}
+
+.result-detail-box p {
+  margin: 8px 0 0;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--brown);
+}
+
+.detail-label {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: #fff0d4;
+  color: var(--brown);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.variation-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.variation-chip {
+  padding: 8px 11px;
+  border: 2px solid rgba(90, 52, 34, 0.25);
+  border-radius: 999px;
+  background: #ffffff;
+  color: var(--brown);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.result-actions {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.result-actions button {
+  min-height: 48px;
+}

@@ -340,9 +340,24 @@ function App() {
 
           <p className="today-text">가 괜찮겠지.</p>
 
-          <p className="result-reason">
-            {currentResult.reason}
-          </p>
+          <div className="result-detail-box">
+  <span className="detail-label">왜 이 메뉴냐면</span>
+  <p>{currentResult.reason}</p>
+</div>
+
+{currentResult.variations?.length > 0 && (
+  <div className="variation-box">
+    <span className="detail-label">이렇게 먹어도 좋지</span>
+
+    <div className="variation-list">
+      {currentResult.variations.slice(0, 3).map((variation) => (
+        <span className="variation-chip" key={variation}>
+          {variation}
+        </span>
+      ))}
+    </div>
+  </div>
+)}
 
           <div className="alternative-box">
             <p>비슷한 선택지</p>
