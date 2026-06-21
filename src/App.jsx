@@ -114,6 +114,55 @@ function App() {
 
   const currentQuestion = QUESTIONS[currentQuestionIndex];
   const currentResult = recommendation?.main;
+  function handleShareResult() {
+  if (!currentResult) return;
+
+  const variationText =
+    currentResult.variations?.length > 0
+      ? `
+
+이렇게 먹어도 좋지
+${currentResult.variations.slice(0, 3).join(' · ')}`
+      : '';
+
+  const shareUrl = window.location.origin;
+
+  const shareText = `🐿️ 머먹지가 오늘 메뉴를 골라줬지!
+
+오늘의 추천은
+🍽️ ${currentResult.name}
+
+${currentResult.reason}${variationText}
+
+나도 메뉴 추천 받아보기
+${shareUrl}`;
+
+  if (navigator.share) {
+    navigator
+      .share({
+        title: '머먹지 추천 결과',
+        text: shareText,
+      })
+      .catch(() => {});
+
+    return;
+  }
+
+  if (navigator.clipboard) {
+    navigator.clipboard
+      .writeText(shareText)
+      .then(() => {
+        alert('추천 결과를 복사했지! 친구에게 붙여넣어 보내면 돼.');
+      })
+      .catch(() => {
+        window.prompt('아래 내용을 복사해서 공유하면 돼.', shareText);
+      });
+
+    return;
+  }
+
+  window.prompt('아래 내용을 복사해서 공유하면 돼.', shareText);
+}
   async function copyShareText(text) {
   try {
     await navigator.clipboard.writeText(text);
@@ -452,6 +501,7 @@ ${shareUrl}`;
           >
             이걸로 정했지!
           </button>
+          
           <button className="share-button" onClick={handleShareResult}>
   친구한테 공유하기
 </button>
