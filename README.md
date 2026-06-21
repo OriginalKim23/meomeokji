@@ -16,7 +16,7 @@
 
 아래 링크에서 테스트할 수 있습니다.
 
-배포 링크: 여기에 Vercel 링크 붙여넣기
+배포 링크: https://meomeokji-alpha.vercel.app/
 
 ## 주요 기능
 
