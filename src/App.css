@@ -500,3 +500,78 @@ h1 {
   transform: translateY(2px);
   box-shadow: 2px 2px 0 rgba(90, 52, 34, 0.18);
 }
+/* Start screen polish */
+
+.app > .start-card:not(.question-card):not(.result-card):not(.complete-card):not(.loading-card) {
+  position: relative;
+  min-height: 620px;
+  padding: 52px 28px 42px;
+  justify-content: center;
+}
+
+.app > .start-card:not(.question-card):not(.result-card):not(.complete-card):not(.loading-card) .mascot {
+  margin-bottom: 8px;
+  font-size: 74px;
+  line-height: 1;
+  filter: drop-shadow(4px 5px 0 rgba(90, 52, 34, 0.18));
+}
+
+.app > .start-card:not(.question-card):not(.result-card):not(.complete-card):not(.loading-card) h1 {
+  margin: 0 0 8px;
+  font-size: 58px;
+  line-height: 1;
+  letter-spacing: -2px;
+}
+
+.app > .start-card:not(.question-card):not(.result-card):not(.complete-card):not(.loading-card) .subtitle {
+  margin: 0 0 28px;
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+.app > .start-card:not(.question-card):not(.result-card):not(.complete-card):not(.loading-card) .speech-bubble {
+  width: 100%;
+  max-width: 310px;
+  margin: 0 auto 24px;
+  padding: 22px 20px;
+  font-size: 19px;
+  line-height: 1.55;
+}
+
+.app > .start-card:not(.question-card):not(.result-card):not(.complete-card):not(.loading-card) .description {
+  margin: 0 0 28px;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.app > .start-card:not(.question-card):not(.result-card):not(.complete-card):not(.loading-card) .start-button {
+  width: 100%;
+  max-width: 320px;
+  min-height: 66px;
+  font-size: 21px;
+  border-radius: 22px;
+}
+
+@media (max-width: 480px) {
+  .app {
+    padding: 18px;
+  }
+
+  .app > .start-card:not(.question-card):not(.result-card):not(.complete-card):not(.loading-card) {
+    min-height: calc(100vh - 72px);
+    padding: 42px 24px 34px;
+  }
+
+  .app > .start-card:not(.question-card):not(.result-card):not(.complete-card):not(.loading-card) .mascot {
+    font-size: 68px;
+  }
+
+  .app > .start-card:not(.question-card):not(.result-card):not(.complete-card):not(.loading-card) h1 {
+    font-size: 54px;
+  }
+
+  .app > .start-card:not(.question-card):not(.result-card):not(.complete-card):not(.loading-card) .speech-bubble {
+    max-width: 280px;
+    font-size: 18px;
+  }
+}
