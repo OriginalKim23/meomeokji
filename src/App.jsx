@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+﻿import { useRef, useState } from 'react';
 import { MENU_DATA } from './data/menus';
 import { getRecommendation } from './logic/recommendation';
 import './App.css';
@@ -114,135 +114,61 @@ function App() {
 
   const currentQuestion = QUESTIONS[currentQuestionIndex];
   const currentResult = recommendation?.main;
-  function handleShareResult() {
-  if (!currentResult) return;
+    async function copyShareText(text) {
+    if (!navigator.clipboard) {
+      window.prompt('아래 내용을 복사해서 공유하면 돼.', text);
+      return;
+    }
 
-  const variationText =
-    currentResult.variations?.length > 0
-      ? `
+    try {
+      await navigator.clipboard.writeText(text);
+      alert('추천 결과를 복사했지! 친구에게 붙여넣어 보내면 돼.');
+    } catch (error) {
+      window.prompt('아래 내용을 복사해서 공유하면 돼.', text);
+    }
+  }
+
+  async function handleShareResult() {
+    if (!currentResult) return;
+
+    const shareUrl = window.location.origin;
+
+    const variationText =
+      currentResult.variations?.length > 0
+        ? `
 
 이렇게 먹어도 좋지
 ${currentResult.variations.slice(0, 3).join(' · ')}`
-      : '';
+        : '';
 
-  const shareUrl = window.location.origin;
-
-  const shareText = `🐿️ 머먹지가 오늘 메뉴를 골라줬지!
+    const shareMessage = `🐿️ 머먹지가 오늘 메뉴를 골라줬지!
 
 오늘의 추천은
 🍽️ ${currentResult.name}
 
-${currentResult.reason}${variationText}
+${currentResult.reason}${variationText}`;
+
+    const fullShareText = `${shareMessage}
 
 나도 메뉴 추천 받아보기
 ${shareUrl}`;
 
-  if (navigator.share) {
-    navigator
-      .share({
-        title: '머먹지 추천 결과',
-        text: shareText,
-      })
-      .catch(() => {});
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: '머먹지? 추천 결과',
+          text: shareMessage,
+          url: shareUrl,
+        });
+      } catch (error) {
+        // 사용자가 공유창을 닫은 경우에는 아무것도 하지 않음
+      }
 
-    return;
-  }
-
-  if (navigator.clipboard) {
-    navigator.clipboard
-      .writeText(shareText)
-      .then(() => {
-        alert('추천 결과를 복사했지! 친구에게 붙여넣어 보내면 돼.');
-      })
-      .catch(() => {
-        window.prompt('아래 내용을 복사해서 공유하면 돼.', shareText);
-      });
-
-    return;
-  }
-
-  window.prompt('아래 내용을 복사해서 공유하면 돼.', shareText);
-}
-  async function copyShareText(text) {
-  try {
-    await navigator.clipboard.writeText(text);
-    alert('추천 결과를 복사했지! 친구에게 붙여넣어 보내면 돼.');
-  } catch (error) {
-    window.prompt('아래 내용을 복사해서 공유하면 돼.', text);
-  }
-}
-
-async function handleShareResult() {
-  if (!currentResult) return;
-
-  const shareText = `오늘의 머먹지 추천은 ${currentResult.name}!
-
-${currentResult.reason}
-
-머뭇거리는 시간을 줄여주는 메뉴 추천 서비스, 머먹지 🐿️`;
-
-  const shareUrl = window.location.origin;
-
-  const fullShareText = `${shareText}
-
-${shareUrl}`;
-
-  if (navigator.share) {
-    try {
-      await navigator.share({
-        title: '머먹지 추천 결과',
-        text: shareText,
-        url: shareUrl,
-      });
-    } catch (error) {
-      // 공유창을 닫은 경우에는 아무것도 하지 않음
+      return;
     }
 
-    return;
+    copyShareText(fullShareText);
   }
-
-  copyShareText(fullShareText);
-}
-  async function copyShareText(text) {
-  try {
-    await navigator.clipboard.writeText(text);
-    alert('추천 결과를 복사했지! 친구에게 붙여넣어 보내면 돼.');
-  } catch (error) {
-    window.prompt('아래 내용을 복사해서 공유하면 돼.', text);
-  }
-}
-
-async function handleShareResult() {
-  if (!currentResult) return;
-
-  const shareText = `오늘의 머먹지 추천은 ${currentResult.name}!
-
-${currentResult.reason}
-
-머뭇거리는 시간을 줄여주는 메뉴 추천 서비스, 머먹지 🐿️`;
-
-  const shareUrl = window.location.origin;
-
-  const fullShareText = `${shareText}
-
-${shareUrl}`;
-
-  if (navigator.share) {
-    try {
-      await navigator.share({
-        title: '머먹지 추천 결과',
-        text: shareText,
-        url: shareUrl,
-      });
-    } catch (error) {
-      // 공유창을 닫은 경우에는 아무것도 하지 않음
-    }
-
-    return;
-  }
-
-  copyShareText(fullShareText);
-}
 
   function handleStart() {
     setScreen('question');
