@@ -114,6 +114,13 @@ function App() {
 
   const currentQuestion = QUESTIONS[currentQuestionIndex];
   const currentResult = recommendation?.main;
+    const selectedSummary = QUESTIONS.map((question) => {
+    const selectedOption = question.options.find(
+      (option) => option.value === answers[question.id]
+    );
+
+    return selectedOption?.label;
+  }).filter(Boolean);
     async function copyShareText(text) {
     if (!navigator.clipboard) {
       window.prompt('아래 내용을 복사해서 공유하면 돼.', text);
@@ -404,6 +411,12 @@ ${shareUrl}`;
             <h2 className="result-menu">{currentResult.name}</h2>
             <p className="today-text">가 괜찮겠지.</p>
           </div>
+                    {selectedSummary.length > 0 && (
+            <p className="answer-summary">
+              <span>내 선택</span>
+              {selectedSummary.join(' · ')}
+            </p>
+          )}
 
           <button
             className="start-button result-decision-button"

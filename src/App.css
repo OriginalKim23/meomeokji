@@ -1067,3 +1067,22 @@ h1 {
     font-size: 18px;
   }
 }
+.answer-summary {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  margin: 10px 0 14px;
+  padding: 9px 12px;
+  border-radius: 999px;
+  background: rgba(255, 248, 232, 0.85);
+  color: #7a5638;
+  font-size: 0.78rem;
+  line-height: 1.4;
+  word-break: keep-all;
+}
+
+.answer-summary span {
+  font-weight: 800;
+  color: #9a5b2f;
+}
