@@ -1,6 +1,7 @@
 ﻿import { useRef, useState } from 'react';
 import { StartScreen } from './components/StartScreen';
 import { CompleteScreen } from './components/CompleteScreen';
+import { ResultScreen } from './components/ResultScreen';
 import { QUESTIONS } from './data/questions';
 import { MENU_DATA } from './data/menus';
 import { getRecommendation } from './logic/recommendation';
@@ -248,79 +249,15 @@ function App() {
     }
 
     return (
-      <main className="app">
-        <section className="start-card result-card">
-          <p className="result-label">🐿️ 찾았지!</p>
-
-          <div className="result-hero">
-            <div
-              className="result-visual"
-              role="img"
-              aria-label={`${currentResult.name} 음식 이미지 자리`}
-            >
-              <span className="visual-sparkle">✦</span>
-              <span className="visual-plate">🍽️</span>
-              <span className="visual-sparkle">✦</span>
-            </div>
-
-            <p className="today-text">오늘은</p>
-            <h2 className="result-menu">{currentResult.name}</h2>
-            <p className="today-text">가 괜찮겠지.</p>
-          </div>
-                    {selectedSummary.length > 0 && (
-            <p className="answer-summary">
-              <span>내 선택</span>
-              {selectedSummary.join(' · ')}
-            </p>
-          )}
-
-          <button
-            className="start-button result-decision-button"
-            onClick={() => setScreen('complete')}
-          >
-            이걸로 정했지!
-          </button>
-
-          <div className="result-detail-box">
-            <span className="detail-label">왜 이 메뉴냐면</span>
-            <p>{currentResult.reason}</p>
-          </div>
-
-          {currentResult.variations?.length > 0 && (
-            <div className="variation-box">
-              <span className="detail-label">이렇게 먹어도 좋지</span>
-
-              <div className="variation-list">
-                {currentResult.variations.slice(0, 3).map((variation) => (
-                  <span className="variation-chip" key={variation}>
-                    {variation}
-                  </span>
-                ))}
-              </div>
-            </div>
-          )}
-
-          <div className="alternative-box">
-            <p>비슷한 선택지</p>
-            <strong>
-              {recommendation.alternatives.map((menu) => menu.name).join(' · ')}
-            </strong>
-          </div>
-
-          <button className="share-button" onClick={handleShareResult}>
-            친구한테 공유하기
-          </button>
-
-          <div className="result-actions">
-            <button className="sub-button" onClick={handleRetry}>
-              다시 골라줘
-            </button>
-            <button className="sub-button" onClick={handleDislike}>
-              별로야
-            </button>
-          </div>
-        </section>
-      </main>
+      <ResultScreen
+        menu={currentResult}
+        alternatives={recommendation.alternatives}
+        selectedSummary={selectedSummary}
+        onConfirm={() => setScreen('complete')}
+        onShare={handleShareResult}
+        onRetry={handleRetry}
+        onDislike={handleDislike}
+      />
     );
   }
 
