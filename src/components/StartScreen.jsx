@@ -1,27 +1,32 @@
 export function StartScreen({ onStart }) {
   return (
     <main className="app">
-      <section className="start-card">
-        <div className="mascot">🐿️</div>
+      <section className="start-card start-landing-card">
+        <div className="start-badge">오늘 뭐 먹지?</div>
 
-        <h1>머먹지</h1>
+        <div className="start-mascot-scene" aria-hidden="true">
+          <span className="start-mascot-glow"></span>
+          <span className="start-mascot">🐿️</span>
+          <span className="start-spoon">🥄</span>
+          <span className="start-food start-food-1">🍜</span>
+          <span className="start-food start-food-2">🍰</span>
+          <span className="start-food start-food-3">🍙</span>
+        </div>
+
+        <h1>머먹지?</h1>
 
         <p className="subtitle">
-          머뭇거리는 시간을 줄여주는<br />
-          메뉴 추천 서비스
+          오늘 메뉴 고민,<br />
+          짧게 끝내지!
         </p>
 
-        <div className="speech-bubble">
+        <div className="speech-bubble start-speech">
           오늘도 메뉴 앞에서<br />
           머뭇거리고 있지?
         </div>
 
-        <p className="description">
-          머먹쥐가 딱 하나 골라줄게.
-        </p>
-
         <button className="start-button" onClick={onStart}>
-          시작하기
+          먹자!
         </button>
       </section>
     </main>

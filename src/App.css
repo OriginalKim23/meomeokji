@@ -1154,3 +1154,92 @@ h1 {
     margin-top: 13px;
   }
 }
+.start-landing-card {
+  position: relative;
+  overflow: hidden;
+  padding-top: 34px;
+}
+
+.start-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  padding: 7px 13px;
+  border-radius: 999px;
+  background: rgba(255, 237, 198, 0.9);
+  color: #8a562f;
+  font-size: 0.78rem;
+  font-weight: 800;
+  box-shadow: 0 8px 18px rgba(122, 77, 38, 0.1);
+}
+
+.start-mascot-scene {
+  position: relative;
+  width: 148px;
+  height: 118px;
+  margin: 0 auto 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.start-mascot-glow {
+  position: absolute;
+  width: 108px;
+  height: 108px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, rgba(255, 224, 145, 0.9) 0%, rgba(255, 244, 213, 0.8) 58%, rgba(255, 255, 255, 0) 72%);
+}
+
+.start-mascot {
+  position: relative;
+  z-index: 2;
+  font-size: 4.4rem;
+  filter: drop-shadow(0 10px 14px rgba(105, 70, 35, 0.16));
+}
+
+.start-spoon {
+  position: absolute;
+  z-index: 3;
+  right: 32px;
+  bottom: 24px;
+  font-size: 1.75rem;
+  transform: rotate(-18deg);
+}
+
+.start-food {
+  position: absolute;
+  z-index: 2;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: #fff8e8;
+  box-shadow: 0 8px 16px rgba(104, 67, 32, 0.12);
+  font-size: 1.15rem;
+}
+
+.start-food-1 {
+  left: 2px;
+  top: 26px;
+  transform: rotate(-8deg);
+}
+
+.start-food-2 {
+  right: 2px;
+  top: 18px;
+  transform: rotate(8deg);
+}
+
+.start-food-3 {
+  left: 24px;
+  bottom: 4px;
+  transform: rotate(6deg);
+}
+
+.start-speech {
+  margin-top: 18px;
+}
